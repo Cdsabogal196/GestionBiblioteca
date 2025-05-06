@@ -1,0 +1,65 @@
+﻿@model GestionDeBiblioteca.Models.DTO.BookDTO
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+@if (!ViewData.ModelState.IsValid)
+{
+    <div class="alert alert-danger">
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    </div>
+}
+
+<h3>¿Quieres ver los detalles de este libro?</h3>
+
+<div class="card">
+    <div class="card-header">
+        <h4>Detalles del Libro</h4>
+    </div>
+    <div class="card-body">
+        <dl class="row">
+            <dt class="col-sm-3">
+                Autor
+            </dt>
+            <dd class="col-sm-9">
+                @Html.DisplayFor(model => model.Author.Name) <!-- Asumiendo que Author.Name existe -->
+            </dd>
+
+            <dt class="col-sm-3">
+                Título
+            </dt>
+            <dd class="col-sm-9">
+                @Html.DisplayFor(model => model.Title)
+            </dd>
+
+            <dt class="col-sm-3">
+                Año
+            </dt>
+            <dd class="col-sm-9">
+                @Html.DisplayFor(model => model.Year)
+            </dd>
+
+            <dt class="col-sm-3">
+                Género
+            </dt>
+            <dd class="col-sm-9">
+                @Html.DisplayFor(model => model.Genre)
+            </dd>
+
+            <dt class="col-sm-3">
+                Número de Páginas
+            </dt>
+            <dd class="col-sm-9">
+                @Html.DisplayFor(model => model.NumPage)
+            </dd>
+        </dl>
+    </div>
+</div>
+
+<p class="text-center">
+    @Html.ActionLink("Editar", "Edit", new { id = Model.BookId }, new { @class = "btn btn-primary" }) |
+    @Html.ActionLink("Volver a la lista", "Index", null, new { @class = "btn btn-secondary" })
+</p>

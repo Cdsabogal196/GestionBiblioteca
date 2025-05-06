@@ -1,0 +1,67 @@
+﻿@model GestionDeBiblioteca.Models.DTO.BookDTO
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Eliminar</h2>
+@if (!ViewData.ModelState.IsValid)
+{
+    <div class="alert alert-danger">
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    </div>
+}
+<h3>¿Estás seguro de que deseas eliminar este libro?</h3>
+<div class="card">
+    <div class="card-header">
+        <h4>Detalles del libro</h4>
+    </div>
+    <div class="card-body">
+        <dl class="row">
+            <dt class="col-sm-3">
+                Nombre del autor
+            </dt>
+            <dd class="col-sm-9">
+                @Html.DisplayFor(model => model.AuthorName)
+            </dd>
+
+            <dt class="col-sm-3">
+                Título
+            </dt>
+            <dd class="col-sm-9">
+                @Html.DisplayFor(model => model.Title)
+            </dd>
+
+            <dt class="col-sm-3">
+                Año
+            </dt>
+            <dd class="col-sm-9">
+                @Html.DisplayFor(model => model.Year)
+            </dd>
+
+            <dt class="col-sm-3">
+                Género
+            </dt>
+            <dd class="col-sm-9">
+                @Html.DisplayFor(model => model.Genre)
+            </dd>
+
+            <dt class="col-sm-3">
+                Número de páginas
+            </dt>
+            <dd class="col-sm-9">
+                @Html.DisplayFor(model => model.NumPage)
+            </dd>
+        </dl>
+    </div>
+</div>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-actions text-center">
+        <button type="submit" class="btn btn-danger">Eliminar</button> |
+        @Html.ActionLink("Volver a la lista", "Index", null, new { @class = "btn btn-secondary" })
+    </div>
+}
